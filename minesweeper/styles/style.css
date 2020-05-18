@@ -1,0 +1,182 @@
+/* Base */
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+}
+
+/* shell */
+
+.shell {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+/* section--centered */
+
+.section--centered {
+	text-align: center;
+	padding: 40px 0;
+}
+
+/* minesweeper */
+
+.minesweeper {
+	display: inline-block;
+	background-color: #c0c0c0;
+	padding: 7px;
+}
+
+.minesweeper .minesweeper__head {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	border-top: 2px solid #808080;
+	border-left: 2px solid #808080;
+	border-bottom: 2px solid #ffffff;
+	border-right: 2px solid #ffffff;
+	padding: 8px;
+	margin-bottom: 12px;
+}
+
+.minesweeper .minesweeper__center {
+	border-top: 2px solid #ffffff;
+	border-left: 2px solid #ffffff;
+	border-bottom: 2px solid #808080;
+	border-right: 2px solid #808080;
+}
+
+.minesweeper .minesweeper__center img {
+	width: 34px;
+	height: 34px;
+	display: block;
+	background: url(../assets/images/faces.png) 0 0;
+	background-size: 76px 72px;
+}
+
+.minesweeper .minesweeper__center.active img {
+	background-position: top right;
+}
+
+.minesweeper .minesweeper__center.win img {
+	background-position: bottom left;
+}
+
+.minesweeper .minesweeper__center.loose img {
+	background-position: bottom right;
+}
+
+.minesweeper .minesweeper__body {
+	border-top: 4px solid #808080;
+	border-left: 4px solid #808080;
+	border-bottom: 4px solid #ffffff;
+	border-right: 4px solid #ffffff;
+}
+
+/* counter */
+
+.counter {
+	min-width: 60px;
+	height: 100%;
+	text-align: right;
+	border-top: 2px solid #808080;
+	border-left: 2px solid #808080;
+	border-bottom: 2px solid #ffffff;
+	border-right: 2px solid #ffffff;
+	padding: 2px;
+	background-color: #000000;
+}
+
+.counter p {
+	font-size: 28px;
+	color: #ff0000;
+	margin: 0;
+	padding: 0;
+}
+
+/* minefield */
+
+.minefield {
+	background-color: #808080;
+	padding-bottom: 1px;
+}
+
+.minefield .minefield__row {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+
+	margin: 0 1px;
+}
+
+.minefield .minefield__row ~ .minefield__row {
+	margin-top: 2px;
+}
+
+.minefield .minefield__cell {
+	width: 30px;
+	height: 30px;
+	background-color: #c0c0c0;
+	margin: 0 1px;
+	cursor: pointer;
+	font-size: 28px;
+	font-weight: 700;
+	text-align: center;
+	line-height: 30px;
+}
+
+.minefield .minefield__cell--empty {
+	border-top: 2px solid #ffffff;
+	border-left: 2px solid #ffffff;
+	border-bottom: 2px solid #808080;
+	border-right: 2px solid #808080;
+}
+
+.minefield .minefield__cell--red-bg {
+	background-color: #ff0000;
+}
+
+.minefield .minefield__cell--0 {
+	background-color: #c0c0c0;
+	font-size: 0;
+}
+
+.minefield .minefield__cell--1 {
+	color: #0000ff;
+}
+
+.minefield .minefield__cell--2 {
+	color: green;
+}
+
+.minefield .minefield__cell--3 {
+	color: #ff0000;
+}
+
+.minefield .minefield__cell--4 {
+	color: darkblue;
+}
+
+.minefield .minefield__cell--5 {
+	color: darkred;
+}
+
+.minefield .minefield__cell--6 {
+	color: greenyellow;
+}
+
+.minefield .minefield__cell--7 {
+	color: #000000;
+}
+
+.minefield .minefield__cell--8 {
+	color: gray;
+}
