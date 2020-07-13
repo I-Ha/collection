@@ -1,0 +1,14 @@
+# node modules #
+######################
+node_modules/
+
+# built #
+######################
+/assets/scripts
+package-lock.json
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite

@@ -1,74 +1,8 @@
-const getRandomInt = (max) => {
-	return Math.floor(Math.random() * Math.floor(max));
-};
+import { getRandomInt } from '../Utility/helpers';
+import MinefieldCell from './MinefieldCell';
+import { App } from '../app';
 
-class MinefieldCell {
-	constructor(status) {
-		this.status = status;
-		this.isActive = true;
-		this.isMarked = false;
-		this.createCell();
-
-		this.cell.addEventListener('click', this.leftClickHandler.bind(this));
-
-		this.cell.addEventListener('contextmenu', this.rightClickHandler.bind(this));
-	}
-
-	createCell() {
-		this.cell = document.createElement('div');
-		this.cell.classList.add('minefield__cell', 'minefield__cell--empty');
-	}
-
-	activateCell() {
-		this.isActive = false;
-		this.cell.classList.remove('minefield__cell--empty');
-
-		if (this.status === false) {
-			this.cell.classList.add('minefield__cell--red-bg');
-			this.cell.textContent = String.fromCharCode(9728);
-
-			this.cell
-				.closest('.minesweeper')
-				.querySelector('.minesweeper__center')
-				.classList.add('loose');
-
-			App.endGame();
-		} else {
-			this.cell.classList.add(`minefield__cell--${this.status}`);
-			this.cell.textContent = this.status;
-			App.trackProgress.call(App);
-		}
-	}
-
-	leftClickHandler() {
-		if (this.isActive === false) {
-			return;
-		}
-
-		this.activateCell();
-	}
-
-	rightClickHandler() {
-		const counterElement = this.cell.closest('.minesweeper').querySelector('.counter p');
-		let counterElementValue = +counterElement.textContent;
-
-		if (this.isMarked === false && this.isActive === true) {
-			this.cell.textContent = String.fromCharCode(9873);
-			this.isMarked = true;
-			this.isActive = false;
-
-			counterElement.textContent = --counterElementValue;
-		} else if (this.isMarked === true && this.isActive === false) {
-			this.cell.textContent = '';
-			this.isMarked = false;
-			this.isActive = true;
-
-			counterElement.textContent = ++counterElementValue;
-		}
-	}
-}
-
-class MinefieldGrid {
+export default class MinefieldGrid {
 	constructor(height, width, mines) {
 		const grid = this.createGrig(height, width);
 		this.mineGrid = this.placeMines(height, width, mines, grid);
@@ -203,36 +137,3 @@ class MinefieldGrid {
 		counterElement.textContent = mines;
 	}
 }
-
-class App {
-	static init(height, width, mines) {
-		new MinefieldGrid(height, width, mines);
-		this.winCondition = height * width - mines;
-		this.gameProgress = 0;
-	}
-
-	static trackProgress() {
-		++this.gameProgress;
-	}
-
-	static endGame() {
-		const gridElement = document.querySelector('#minesweeper .minefield');
-		const newGridElement = gridElement.cloneNode(true);
-		gridElement.parentNode.replaceChild(newGridElement, gridElement);
-	}
-
-	static winGame(gridCellElement) {
-		if (this.gameProgress !== this.winCondition) {
-			return;
-		}
-
-		gridCellElement
-			.closest('.minesweeper')
-			.querySelector('.minesweeper__center')
-			.classList.add('win');
-
-		this.endGame();
-	}
-}
-
-App.init(16, 30, 60);

@@ -1,0 +1,28 @@
+{
+	"name": "minesweeper",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "webpack",
+		"build:dev": "webpack-dev-server",
+		"build:prod": "webpack --config webpack.config.prod.js"
+	},
+	"author": "i-ha",
+	"license": "ISC",
+	"browserslist": "> 0.5%, not dead",
+	"devDependencies": {
+		"@babel/core": "^7.10.4",
+		"@babel/preset-env": "^7.10.4",
+		"babel-loader": "^8.1.0",
+		"clean-webpack-plugin": "^3.0.0",
+		"webpack": "^4.43.0",
+		"webpack-cli": "^3.3.12",
+		"webpack-dev-server": "^3.11.0"
+	},
+	"dependencies": {
+		"core-js": "^3.6.5",
+		"regenerator-runtime": "^0.13.5"
+	}
+}

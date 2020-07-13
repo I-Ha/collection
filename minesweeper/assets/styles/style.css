@@ -58,7 +58,7 @@ body {
 	width: 34px;
 	height: 34px;
 	display: block;
-	background: url(../assets/images/faces.png) 0 0;
+	background: url('../images/faces.png') 0 0;
 	background-size: 76px 72px;
 }
 
